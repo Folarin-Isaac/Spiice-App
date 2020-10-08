@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 public class FeedFragment extends Fragment {
     BarChart barChart;
     Button viewAll;
+    Spinner percentSpinner;
+    /*String[] percent={}*/
 
     @Nullable
     @Override
