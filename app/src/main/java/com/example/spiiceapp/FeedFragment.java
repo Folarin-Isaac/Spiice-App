@@ -10,9 +10,11 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.spiiceapp.models.WireFrameFragment;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class FeedFragment extends Fragment {
     BarChart barChart;
     Button viewAll;
+    CardView wireframe;
     Spinner percentSpinner;
     /*String[] percent={}*/
 
@@ -63,6 +66,21 @@ public class FeedFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        wireframe=view.findViewById(R.id.wireframeCardview);
+        wireframe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                assert getFragmentManager() != null;
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame_container,new WireFrameFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+
 
         return view;
     }
