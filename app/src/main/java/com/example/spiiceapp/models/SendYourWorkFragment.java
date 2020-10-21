@@ -22,7 +22,7 @@ public class SendYourWorkFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_send_your_work, container, false);
-        image1=view.findViewById(R.id.image);
+        image1=view.findViewById(R.id.image1);
         Glide.with(view).load(R.drawable.image).circleCrop().into(image1);
 
     return view;}
