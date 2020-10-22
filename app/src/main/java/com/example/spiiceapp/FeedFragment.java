@@ -26,26 +26,41 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class FeedFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class FeedFragment extends Fragment {
     BarChart barChart;
     Button viewAll;
     CardView wireframe;
-    String[] percent={"1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%"};
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_feed, container, false);
         barChart=view.findViewById(R.id.chart);
-        Spinner percentSpinner=view.findViewById(R.id.percentSpinner);
+        String[] percent={"1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%"};
+        final Spinner percentSpinner=view.findViewById(R.id.percentSpinner);
 
-        ArrayAdapter adapter=new ArrayAdapter<String>( Objects.requireNonNull(getActivity()).getApplicationContext(),
+
+        ArrayAdapter adapter=new ArrayAdapter(Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_spinner_item,
                 percent);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         percentSpinner.setAdapter(adapter);
+
+        /*percentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                TextView percentText=view.findViewById(R.id.percentTextView);
+                percentText.setText("20%");
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });*/
 
         ArrayList<BarEntry> entries=new ArrayList<>();
         entries.add(new BarEntry(2f, (float) 4.6));
@@ -97,10 +112,5 @@ public class FeedFragment extends Fragment implements AdapterView.OnItemClickLis
         return view;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        TextView percentage=view.findViewById(R.id.percentTextView);
-        percentage.setText(percent[position]);
-    }
 }
 
